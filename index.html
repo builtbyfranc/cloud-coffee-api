@@ -135,6 +135,12 @@
                     <h3>Capuchino</h3>
                     <p>Espresso, leche vaporizada y espuma cremosa.</p>
                     <p class="precio">$65 MXN</p>
+
+                    <button class="boton" onclick="calcularDescuento()">
+                        Aplicar 10% de descuento
+                    </button>
+
+                    <p id="resultadoDescuento"></p>
                 </article>
 
                 <article class="producto">
@@ -155,5 +161,15 @@
     <footer id="contacto">
         <p>Cloud Coffee · Guadalajara, Jalisco · 2026</p>
     </footer>
+    <script>
+        function calcularDescuento() {
+            const precio = 65;
+            const descuento = precio * 0.10;
+            const precioFinal = precio - descuento;
+
+            document.getElementById("resultadoDescuento").textContent =
+                `Precio con descuento: $${precioFinal.toFixed(2)} MXN`;
+        }
+    </script>
 </body>
 </html>
