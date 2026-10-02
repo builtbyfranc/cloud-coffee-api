@@ -136,11 +136,31 @@
                     <p>Espresso, leche vaporizada y espuma cremosa.</p>
                     <p class="precio">$65 MXN</p>
 
-                    <button class="boton" onclick="calcularDescuento()">
+                    <!-- <button class="boton" onclick="calcularDescuento()">
                         Aplicar 10% de descuento
                     </button>
 
-                    <p id="resultadoDescuento"></p>
+                    <p id="resultadoDescuento"></p> -->
+
+
+                    <section class="menu" id="promociones">
+    <h2>Promociones de Capuchino</h2>
+    <p>Precio normal: $65 MXN</p>
+
+    <label for="tipoPromocion">Elige tu promoción:</label>
+    <select id="tipoPromocion">
+        <option value="0.10">Estudiante — 10%</option>
+        <option value="0.15">Cumpleaños — 15%</option>
+    </select>
+
+    <button type="button" class="boton" onclick="calcularDescuento()">
+        Calcular precio
+    </button>
+
+    <p id="resultadoDescuento" role="status"></p>
+</section>
+
+
                 </article>
 
                 <article class="producto">
@@ -161,15 +181,19 @@
     <footer id="contacto">
         <p>Cloud Coffee · Guadalajara, Jalisco · 2026</p>
     </footer>
-    <script>
-        function calcularDescuento() {
-            const precio = 65;
-            const descuento = precio * 0.10;
-            const precioFinal = precio - descuento;
+<script>
+    function calcularDescuento() {
+        const precio = 65;
+        const selector = document.getElementById("tipoPromocion");
+        const porcentaje = Number(selector.value);
+        const promocion = selector.options[selector.selectedIndex].text;
+        const descuento = precio * porcentaje;
+        const precioFinal = precio - descuento;
 
-            document.getElementById("resultadoDescuento").textContent =
-                `Precio con descuento: $${precioFinal.toFixed(2)} MXN`;
-        }
-    </script>
+        document.getElementById("resultadoDescuento").textContent =
+            `${promocion}: ahorras $${descuento.toFixed(2)} MXN. ` +
+            `Precio final: $${precioFinal.toFixed(2)} MXN.`;
+    }
+</script>
 </body>
 </html>
